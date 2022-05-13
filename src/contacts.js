@@ -12,15 +12,11 @@ function addContacts() {
   contacts.appendChild(fragment);
 }
 
+
+
 contacts.addEventListener("scroll", (e) => {
-  const items = Array.from(contacts.getElementsByClassName("contact"));
-  const itemOffsets = items.map((item) => item.offsetTop);
-  const topItemIndex = itemOffsets.findIndex(
-    (offset) => contacts.scrollTop - offset <= -18
-  );
-  if (topItemIndex !== -1) {
-    stickyHeader.textContent = items[topItemIndex].textContent;
-  }
+const value = Math.floor(contacts.scrollTop / 18);
+stickyHeader.textContent = value;
 });
 
 addContacts();
